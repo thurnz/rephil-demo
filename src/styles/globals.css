@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'DM Sans', sans-serif;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  background-color: #0C0B1E;
+  color: #FFFFFF;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Subtle, polished entrance animations */
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0.85;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardTiltIn {
+  0% {
+    opacity: 0.9;
+    transform: translateY(8px) rotate(-1.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(-2.5deg);
+  }
+}
+
+.animate-hero-fade {
+  animation: heroFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-card-tilt {
+  animation: cardTiltIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-hero-fade,
+  .animate-card-tilt {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
